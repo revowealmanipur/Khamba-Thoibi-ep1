@@ -1,10 +1,10 @@
-<!DOCTYPE html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Khamba & Thoibi — Episode I</title>
+<title>Khamba &amp; Thoibi — Episode I</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,10 +14,6 @@ href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;6
 rel="stylesheet">
 
 <style>
-
-/* =====================================================
-   BASIC
-===================================================== */
 
 * {
     box-sizing: border-box;
@@ -46,10 +42,6 @@ body {
         #d8c7a5;
 }
 
-
-/* =====================================================
-   ANTIQUE PAPER TEXTURE
-===================================================== */
 
 body::before {
 
@@ -575,49 +567,6 @@ body::before {
 }
 
 
-.coming-soon {
-
-    display: none;
-
-    margin-top: 38px;
-
-    font-family:
-        "IM Fell English",
-        serif;
-
-    font-size: 43px;
-
-    color: #493522;
-
-    animation:
-        fadeIn
-        1.4s
-        ease;
-}
-
-
-@keyframes fadeIn {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateY(18px)
-            scale(.95);
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
-
 /* =====================================================
    SIGNATURE
 ===================================================== */
@@ -648,6 +597,31 @@ body::before {
     font-size: 24px;
 
     font-weight: 400;
+}
+
+
+/* =====================================================
+   MUSIC BUTTON STYLES
+===================================================== */
+
+#musicBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: #222;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+#musicBtn.playing {
+    transform: scale(1.08);
 }
 
 
@@ -742,6 +716,16 @@ body::before {
 
 <body>
 
+<!-- =====================================================
+     AUDIO & MUSIC BUTTON
+===================================================== -->
+
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicBtn" onclick="toggleMusic()">🎵</button>
+
 
 <!-- =====================================================
      COVER
@@ -768,7 +752,6 @@ body::before {
 </section>
 
 
-
 <!-- =====================================================
      BOOK
 ===================================================== -->
@@ -793,7 +776,6 @@ body::before {
         </p>
 
     </section>
-
 
 
     <!-- =================================================
@@ -833,7 +815,6 @@ body::before {
     </section>
 
 
-
     <!-- =================================================
          IMAGE ONE
     ================================================== -->
@@ -853,7 +834,6 @@ body::before {
         </div>
 
     </div>
-
 
 
     <!-- =================================================
@@ -898,7 +878,6 @@ body::before {
     </section>
 
 
-
     <!-- =================================================
          QUOTE
     ================================================== -->
@@ -910,7 +889,6 @@ body::before {
         knows how to forget.”
 
     </div>
-
 
 
     <!-- =================================================
@@ -993,7 +971,6 @@ body::before {
     </section>
 
 
-
     <!-- =================================================
          IMAGE TWO
     ================================================== -->
@@ -1012,7 +989,6 @@ body::before {
         </div>
 
     </div>
-
 
 
     <!-- =================================================
@@ -1091,7 +1067,6 @@ body::before {
     </section>
 
 
-
     <!-- =================================================
          DECORATION
     ================================================== -->
@@ -1101,7 +1076,6 @@ body::before {
         ❧ ✦ ❧
 
     </div>
-
 
 
     <!-- =================================================
@@ -1173,7 +1147,6 @@ body::before {
     </section>
 
 
-
     <!-- =================================================
          END
     ================================================== -->
@@ -1192,13 +1165,11 @@ body::before {
     </section>
 
 
-
     <div class="page-break">
 
         ❧ ✦ ❧
 
     </div>
-
 
 
     <!-- =================================================
@@ -1207,25 +1178,16 @@ body::before {
 
     <section class="next-area">
 
-        <button
+        <a
+            href="episode2.html"
             class="next-button"
-            onclick="showComingSoon()">
+            style="display:inline-block; text-decoration:none;">
 
             NEXT EPISODE →
 
-        </button>
-
-
-        <div
-            id="comingSoon"
-            class="coming-soon">
-
-            Coming Soon...
-
-        </div>
+        </a>
 
     </section>
-
 
 
     <!-- =================================================
@@ -1248,88 +1210,42 @@ body::before {
 </main>
 
 
-
 <!-- =====================================================
      JAVASCRIPT
 ===================================================== -->
 
 <script>
 
-function showComingSoon() {
-
-    const message =
-        document.getElementById("comingSoon");
-
-    message.style.display = "block";
-
-    message.scrollIntoView({
-
-        behavior: "smooth",
-
-        block: "center"
-
-    });
-
-}
-
-</script>
-
-
-</body>
-</html>
-<html>
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
-</head>
-<audio id="bgMusic" loop>
-    <source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<button id="musicBtn" onclick="toggleMusic()">🎵</button>
-
-<style>
-#musicBtn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    border: none;
-    border-radius: 50%;
-    background: #222;
-    color: white;
-    font-size: 22px;
-    cursor: pointer;
-    z-index: 9999;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-#musicBtn.playing {
-    transform: scale(1.08);
-}
-</style>
-
-<script>
 function toggleMusic() {
-    const music = document.getElementById("bgMusic");
-    const button = document.getElementById("musicBtn");
+
+    const music =
+        document.getElementById("bgMusic");
+
+    const button =
+        document.getElementById("musicBtn");
 
     if (music.paused) {
-        music.play();
-        button.textContent = "⏸";
-        button.classList.add("playing");
-    } else {
-        music.pause();
-        button.textContent = "🎵";
-        button.classList.remove("playing");
-    }
-}
-</script>
-   <body>
-  
-</body>
 
+        music.play();
+
+        button.textContent = "⏸";
+
+        button.classList.add("playing");
+
+    } else {
+
+        music.pause();
+
+        button.textContent = "🎵";
+
+        button.classList.remove("playing");
+
+    }
+
+}
+
+</script>
+
+
+</body>
 </html>
