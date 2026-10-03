@@ -1,224 +1,317 @@
-<!DOCTYPE html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-    <title>Khamba & Thoibi — Music</title>
+<title>Music</title>
 
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
+<style>
 
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
+/* =================================
+   TRANSPARENT PAGE
+   ================================= */
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&display=swap"
-        rel="stylesheet">
+html,
+body {
 
+    margin: 0;
+    padding: 0;
 
-    <style>
+    width: 100%;
+    height: 100%;
 
-        * {
-            box-sizing: border-box;
-        }
+    background: transparent;
 
+    overflow: hidden;
 
-        body {
-            margin: 0;
-            background: transparent;
-        }
+}
 
 
-        /* =================================
-           FLOATING MUSIC PLAYER
-           ================================= */
+/* =================================
+   MUSIC BUTTON
+   ================================= */
 
-        .music-player {
+#musicBtn {
 
-            position: fixed;
+    position: fixed;
 
-            right: 18px;
-            bottom: 20px;
+    right: 22px;
+    bottom: 22px;
 
-            width: 64px;
-            height: 64px;
+    left: auto;
+    top: auto;
 
-            border-radius: 50%;
+    width: 58px;
+    height: 58px;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    padding: 0;
 
-            background:
-                radial-gradient(
-                    circle at 35% 30%,
-                    #6b5237,
-                    #493522 55%,
-                    #2c2117
-                );
+    border-radius: 50%;
 
-            border: 1px solid #b89a70;
+    border: 1px solid #d8bd91;
 
-            box-shadow:
-                0 6px 20px rgba(0,0,0,0.4),
-                inset 0 1px 2px rgba(255,255,255,0.16);
+    background:
+        radial-gradient(
+            circle at 35% 28%,
+            #806548 0%,
+            #60482f 35%,
+            #493522 68%,
+            #302216 100%
+        );
 
-            z-index: 9999;
+    display: flex;
 
-            transition:
-                transform 0.3s ease,
-                box-shadow 0.3s ease;
+    align-items: center;
+    justify-content: center;
 
-        }
+    cursor: grab;
 
+    z-index: 99999;
 
-        /* =================================
-           BUTTON
-           ================================= */
+    box-shadow:
 
-        #musicBtn {
+        0 5px 12px
+        rgba(48, 34, 22, 0.38),
 
-            width: 54px;
-            height: 54px;
+        0 10px 24px
+        rgba(48, 34, 22, 0.25),
 
-            border-radius: 50%;
+        inset 0 1px 2px
+        rgba(255, 239, 207, 0.18);
 
-            border: 1px solid #d1b58b;
+    touch-action: none;
 
-            background:
-                linear-gradient(
-                    145deg,
-                    #55402b,
-                    #3b2b1d
-                );
+    user-select: none;
 
-            color: #f4e5c5;
+    -webkit-user-select: none;
 
-            font-size: 21px;
+    -webkit-tap-highlight-color:
+        transparent;
 
-            cursor: pointer;
+    transition:
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        transform 0.25s ease,
 
-            transition:
-                transform 0.25s ease,
-                box-shadow 0.25s ease,
-                background 0.25s ease;
+        box-shadow 0.25s ease;
 
-        }
+}
 
 
-        /* =================================
-           HOVER
-           ================================= */
+/* =================================
+   INNER RING
+   ================================= */
 
-        #musicBtn:hover {
+#musicBtn::before {
 
-            transform: scale(1.08);
+    content: "";
 
-            background:
-                linear-gradient(
-                    145deg,
-                    #654b31,
-                    #473321
-                );
+    position: absolute;
 
-            box-shadow:
-                0 0 18px
-                rgba(209,181,139,0.35);
+    inset: 5px;
 
-        }
+    border-radius: 50%;
 
+    border:
+        1px solid
+        rgba(244, 229, 197, 0.18);
 
-        /* =================================
-           CLICK
-           ================================= */
+    pointer-events: none;
 
-        #musicBtn:active {
+}
 
-            transform: scale(0.92);
 
-        }
+/* =================================
+   ICON CONTAINER
+   ================================= */
 
+.icon {
 
-        /* =================================
-           PLAYING GLOW
-           ================================= */
+    position: relative;
 
-        .music-player.playing {
+    width: 22px;
+    height: 22px;
 
-            animation:
-                musicGlow 2.4s infinite ease-in-out;
+    display: flex;
 
-        }
+    align-items: center;
+    justify-content: center;
 
+    pointer-events: none;
 
-        @keyframes musicGlow {
+}
 
-            0% {
 
-                box-shadow:
-                    0 6px 20px rgba(0,0,0,0.4),
-                    0 0 0 rgba(209,181,139,0);
+/* =================================
+   PLAY ICON
+   ================================= */
 
-            }
+.play-icon {
 
-            50% {
+    width: 0;
+    height: 0;
 
-                box-shadow:
-                    0 6px 22px rgba(0,0,0,0.42),
-                    0 0 22px
-                    rgba(209,181,139,0.38);
+    margin-left: 4px;
 
-            }
+    border-top:
+        8px solid transparent;
 
-            100% {
+    border-bottom:
+        8px solid transparent;
 
-                box-shadow:
-                    0 6px 20px rgba(0,0,0,0.4),
-                    0 0 0 rgba(209,181,139,0);
+    border-left:
+        12px solid #f4e5c5;
 
-            }
+}
 
-        }
 
+/* =================================
+   PAUSE ICON
+   ================================= */
 
-        /* =================================
-           MOBILE
-           ================================= */
+.pause-icon {
 
-        @media (max-width: 600px) {
+    display: flex;
 
-            .music-player {
+    gap: 5px;
 
-                right: 14px;
-                bottom: 15px;
+}
 
-                width: 59px;
-                height: 59px;
 
-            }
+.pause-icon span {
 
+    display: block;
 
-            #musicBtn {
+    width: 4px;
+    height: 16px;
 
-                width: 49px;
-                height: 49px;
+    border-radius: 1px;
 
-                font-size: 19px;
+    background: #f4e5c5;
 
-            }
+}
 
-        }
 
-    </style>
+/* =================================
+   HOVER
+   ================================= */
+
+#musicBtn:hover {
+
+    transform: scale(1.08);
+
+    box-shadow:
+
+        0 7px 15px
+        rgba(48, 34, 22, 0.42),
+
+        0 12px 28px
+        rgba(48, 34, 22, 0.30),
+
+        0 0 14px
+        rgba(216, 189, 145, 0.15);
+
+}
+
+
+/* =================================
+   DRAGGING
+   ================================= */
+
+#musicBtn.dragging {
+
+    cursor: grabbing;
+
+    transform: scale(1.12);
+
+    box-shadow:
+
+        0 12px 30px
+        rgba(48, 34, 22, 0.50),
+
+        0 0 20px
+        rgba(216, 189, 145, 0.25);
+
+}
+
+
+/* =================================
+   PLAYING GLOW
+   ================================= */
+
+#musicBtn.playing {
+
+    animation:
+        gentleGlow 2.8s ease-in-out infinite;
+
+}
+
+
+@keyframes gentleGlow {
+
+    0% {
+
+        box-shadow:
+
+            0 5px 12px
+            rgba(48, 34, 22, 0.38),
+
+            0 10px 24px
+            rgba(48, 34, 22, 0.25);
+
+    }
+
+    50% {
+
+        box-shadow:
+
+            0 6px 15px
+            rgba(48, 34, 22, 0.42),
+
+            0 10px 26px
+            rgba(48, 34, 22, 0.30),
+
+            0 0 16px
+            rgba(216, 189, 145, 0.28);
+
+    }
+
+    100% {
+
+        box-shadow:
+
+            0 5px 12px
+            rgba(48, 34, 22, 0.38),
+
+            0 10px 24px
+            rgba(48, 34, 22, 0.25);
+
+    }
+
+}
+
+
+/* =================================
+   MOBILE
+   ================================= */
+
+@media (max-width: 600px) {
+
+    #musicBtn {
+
+        width: 56px;
+        height: 56px;
+
+        right: 18px;
+        bottom: 18px;
+
+    }
+
+}
+
+</style>
 
 </head>
 
@@ -226,181 +319,387 @@
 <body>
 
 
-    <!-- =================================
-         ONE MUSIC
-         ================================= -->
+<!-- =================================
+     MUSIC
+     ================================= -->
 
-    <audio id="bgMusic" loop>
+<audio id="bgMusic" loop>
 
-        <source
-            src="music.mp3"
-            type="audio/mpeg">
+    <source
+        src="music.mp3"
+        type="audio/mpeg">
 
-    </audio>
-
-
-    <!-- =================================
-         MUSIC BUTTON
-         ================================= -->
-
-    <div
-        class="music-player"
-        id="musicPlayer">
-
-        <button
-            id="musicBtn"
-            aria-label="Play or pause music">
-
-            ▶
-
-        </button>
-
-    </div>
+</audio>
 
 
+<!-- =================================
+     ONLY BUTTON
+     ================================= -->
 
-    <script>
+<button
+    id="musicBtn"
+    type="button"
+    aria-label="Music">
 
-        const music =
-            document.getElementById("bgMusic");
+    <span class="icon">
 
-        const musicBtn =
-            document.getElementById("musicBtn");
+        <span
+            class="play-icon"
+            id="playIcon">
+        </span>
 
-        const musicPlayer =
-            document.getElementById("musicPlayer");
+    </span>
+
+</button>
 
 
-        /* =================================
-           PLAY MUSIC
-           ================================= */
+<script>
 
-        function playMusic() {
+/* =================================
+   ELEMENTS
+   ================================= */
 
-            music.play()
-                .then(() => {
+const music =
+    document.getElementById("bgMusic");
 
-                    musicBtn.textContent = "⏸";
+const button =
+    document.getElementById("musicBtn");
 
-                    musicPlayer.classList.add(
-                        "playing"
-                    );
+const icon =
+    document.getElementById("playIcon");
 
-                })
-                .catch(() => {});
+
+/* =================================
+   DRAG VARIABLES
+   ================================= */
+
+let dragging = false;
+
+let moved = false;
+
+let startX = 0;
+let startY = 0;
+
+let startLeft = 0;
+let startTop = 0;
+
+const dragThreshold = 6;
+
+
+/* =================================
+   PLAY ICON
+   ================================= */
+
+function showPlayIcon() {
+
+    icon.className =
+        "play-icon";
+
+}
+
+
+/* =================================
+   PAUSE ICON
+   ================================= */
+
+function showPauseIcon() {
+
+    icon.className =
+        "pause-icon";
+
+    icon.innerHTML =
+        "<span></span><span></span>";
+
+}
+
+
+/* =================================
+   POINTER DOWN
+   ================================= */
+
+button.addEventListener(
+    "pointerdown",
+    function(event) {
+
+        dragging = true;
+
+        moved = false;
+
+        startX = event.clientX;
+
+        startY = event.clientY;
+
+
+        const rect =
+            button.getBoundingClientRect();
+
+
+        startLeft = rect.left;
+
+        startTop = rect.top;
+
+
+        button.classList.add(
+            "dragging"
+        );
+
+
+        button.setPointerCapture(
+            event.pointerId
+        );
+
+    }
+);
+
+
+/* =================================
+   POINTER MOVE
+   ================================= */
+
+button.addEventListener(
+    "pointermove",
+    function(event) {
+
+        if (!dragging) return;
+
+
+        const dx =
+            event.clientX - startX;
+
+        const dy =
+            event.clientY - startY;
+
+
+        if (
+
+            Math.abs(dx) >
+                dragThreshold ||
+
+            Math.abs(dy) >
+                dragThreshold
+
+        ) {
+
+            moved = true;
 
         }
 
 
-        /* =================================
-           FIRST TAP ANYWHERE
-           ================================= */
+        if (!moved) return;
 
-        document.addEventListener(
-            "click",
-            function () {
 
-                playMusic();
+        let newLeft =
+            startLeft + dx;
 
-            },
-            {
-                once: true
-            }
+        let newTop =
+            startTop + dy;
+
+
+        const maxLeft =
+            window.innerWidth -
+            button.offsetWidth;
+
+        const maxTop =
+            window.innerHeight -
+            button.offsetHeight;
+
+
+        newLeft =
+            Math.max(
+                0,
+                Math.min(
+                    newLeft,
+                    maxLeft
+                )
+            );
+
+
+        newTop =
+            Math.max(
+                0,
+                Math.min(
+                    newTop,
+                    maxTop
+                )
+            );
+
+
+        button.style.left =
+            newLeft + "px";
+
+        button.style.top =
+            newTop + "px";
+
+        button.style.right =
+            "auto";
+
+        button.style.bottom =
+            "auto";
+
+    }
+);
+
+
+/* =================================
+   POINTER UP
+   ================================= */
+
+button.addEventListener(
+    "pointerup",
+    function() {
+
+        if (!dragging) return;
+
+
+        dragging = false;
+
+        button.classList.remove(
+            "dragging"
         );
 
 
-        document.addEventListener(
-            "touchstart",
-            function () {
+        if (!moved) {
 
-                playMusic();
+            toggleMusic();
 
-            },
-            {
-                once: true,
-                passive: true
-            }
+        }
+
+    }
+);
+
+
+/* =================================
+   POINTER CANCEL
+   ================================= */
+
+button.addEventListener(
+    "pointercancel",
+    function() {
+
+        dragging = false;
+
+        moved = false;
+
+        button.classList.remove(
+            "dragging"
         );
 
-
-        /* =================================
-           BUTTON CONTROL
-           ================================= */
-
-        musicBtn.addEventListener(
-            "click",
-            function (event) {
-
-                event.stopPropagation();
+    }
+);
 
 
-                if (music.paused) {
+/* =================================
+   PLAY / PAUSE
+   ================================= */
 
-                    playMusic();
+function toggleMusic() {
 
-                }
+    if (music.paused) {
 
-                else {
+        music.play();
 
-                    music.pause();
+    } else {
 
-                }
+        music.pause();
 
-            }
+    }
+
+}
+
+
+/* =================================
+   MUSIC STARTED
+   ================================= */
+
+music.addEventListener(
+    "play",
+    function() {
+
+        showPauseIcon();
+
+        button.classList.add(
+            "playing"
         );
 
+    }
+);
 
-        /* =================================
-           PLAY STATE
-           ================================= */
 
-        music.addEventListener(
-            "play",
-            function () {
+/* =================================
+   MUSIC PAUSED
+   ================================= */
 
-                musicBtn.textContent = "⏸";
+music.addEventListener(
+    "pause",
+    function() {
 
-                musicPlayer.classList.add(
-                    "playing"
-                );
+        showPlayIcon();
 
-            }
+        button.classList.remove(
+            "playing"
         );
 
+    }
+);
 
-        /* =================================
-           PAUSE STATE
-           ================================= */
 
-        music.addEventListener(
-            "pause",
-            function () {
+/* =================================
+   KEEP INSIDE SCREEN
+   ================================= */
 
-                musicBtn.textContent = "▶";
+window.addEventListener(
+    "resize",
+    function() {
 
-                musicPlayer.classList.remove(
-                    "playing"
-                );
+        const rect =
+            button.getBoundingClientRect();
 
-            }
-        );
 
-    </script>
+        const maxLeft =
+            window.innerWidth -
+            button.offsetWidth;
 
+        const maxTop =
+            window.innerHeight -
+            button.offsetHeight;
+
+
+        const left =
+            Math.max(
+                0,
+                Math.min(
+                    rect.left,
+                    maxLeft
+                )
+            );
+
+
+        const top =
+            Math.max(
+                0,
+                Math.min(
+                    rect.top,
+                    maxTop
+                )
+            );
+
+
+        button.style.left =
+            left + "px";
+
+        button.style.top =
+            top + "px";
+
+        button.style.right =
+            "auto";
+
+        button.style.bottom =
+            "auto";
+
+    }
+);
+
+</script>
 
 </body>
-
-</html>
-<html>
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
-</head>
-
-<body>
-  
-</body>
-
 </html>
