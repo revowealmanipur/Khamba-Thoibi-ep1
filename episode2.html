@@ -1,0 +1,1842 @@
+<!DOCTYPE html><!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Khamba & Thoibi — Episode II</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&display=swap"
+rel="stylesheet">
+
+
+<style>
+
+/* =====================================================
+   BASIC
+===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+
+    color: #30251b;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,255,255,.38),
+            transparent 60%
+        ),
+        #d8c7a5;
+}
+
+
+/* =====================================================
+   ANTIQUE PAPER TEXTURE
+===================================================== */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 999;
+
+    opacity: .13;
+
+    background-image:
+
+        repeating-linear-gradient(
+            0deg,
+            rgba(70,40,10,.12) 0px,
+            transparent 1px,
+            transparent 5px
+        );
+}
+
+
+/* =====================================================
+   COVER
+===================================================== */
+
+.cover {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 40px 20px;
+
+    position: relative;
+
+    text-align: center;
+
+    color: #f5ead5;
+
+    background:
+
+        linear-gradient(
+            rgba(35,24,13,.32),
+            rgba(35,24,13,.72)
+        ),
+
+        url("https://files.catbox.moe/ihn8t8.jpg")
+
+        center / cover no-repeat;
+}
+
+
+.cover::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 22px;
+
+    border:
+        1px solid
+        rgba(255,235,190,.75);
+}
+
+
+.cover-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 850px;
+
+    padding:
+        55px
+        35px;
+
+    background:
+        rgba(35,24,13,.55);
+
+    backdrop-filter:
+        blur(2px);
+}
+
+
+.cover h1 {
+
+    margin: 0;
+
+    font-family:
+        "IM Fell English",
+        serif;
+
+    font-size:
+        clamp(48px, 10vw, 100px);
+
+    font-weight: 400;
+
+    letter-spacing: 4px;
+}
+
+
+.subtitle {
+
+    margin-top: 18px;
+
+    font-size: 20px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+}
+
+
+.episode {
+
+    margin-top: 50px;
+
+    font-size: 18px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =====================================================
+   BOOK
+===================================================== */
+
+.book {
+
+    max-width: 900px;
+
+    margin:
+        70px
+        auto;
+
+    padding: 25px;
+
+    background:
+        rgba(247,235,208,.93);
+
+    box-shadow:
+        0 20px 60px
+        rgba(50,30,10,.32);
+}
+
+
+/* =====================================================
+   CHAPTER HEADER
+===================================================== */
+
+.chapter {
+
+    text-align: center;
+
+    padding:
+        65px
+        20px
+        45px;
+}
+
+
+.ornament {
+
+    font-size: 25px;
+
+    letter-spacing: 8px;
+
+    color: #806548;
+}
+
+
+.chapter h2 {
+
+    margin:
+        20px
+        0
+        8px;
+
+    font-family:
+        "IM Fell English",
+        serif;
+
+    font-size: 47px;
+
+    font-weight: 400;
+}
+
+
+.chapter p {
+
+    margin: 0;
+
+    font-size: 19px;
+
+    font-style: italic;
+
+    color: #6b5841;
+}
+
+
+/* =====================================================
+   STORY
+===================================================== */
+
+.story {
+
+    padding:
+        10px
+        8%;
+}
+
+
+.story p {
+
+    margin:
+        0
+        0
+        30px;
+
+    font-size: 21px;
+
+    line-height: 1.9;
+
+    text-align: justify;
+}
+
+
+/* DROP CAP */
+
+.story p:first-child::first-letter {
+
+    float: left;
+
+    padding-right: 11px;
+
+    font-family:
+        "IM Fell English",
+        serif;
+
+    font-size: 84px;
+
+    line-height: .72;
+
+    color: #65452a;
+}
+
+
+/* =====================================================
+   IMAGE
+===================================================== */
+
+.illustration {
+
+    margin:
+        60px
+        auto;
+
+    text-align: center;
+}
+
+
+.illustration img {
+
+    display: block;
+
+    width: 100%;
+
+    max-height: 650px;
+
+    object-fit: cover;
+
+    border:
+        8px
+        solid
+        #efe0be;
+
+    box-shadow:
+        0 12px 35px
+        rgba(50,30,10,.38);
+
+    filter:
+        sepia(.12)
+        contrast(.96)
+        saturate(.85);
+
+    transition:
+        transform .5s ease,
+        filter .5s ease;
+}
+
+
+.illustration img:hover {
+
+    transform:
+        scale(1.015);
+
+    filter:
+        sepia(.04)
+        contrast(1)
+        saturate(.95);
+}
+
+
+.caption {
+
+    margin-top: 14px;
+
+    font-size: 15px;
+
+    font-style: italic;
+
+    color: #715c43;
+}
+
+
+/* =====================================================
+   QUOTE
+===================================================== */
+
+.quote {
+
+    margin:
+        60px
+        8%;
+
+    padding:
+        38px
+        25px;
+
+    text-align: center;
+
+    border-top:
+        1px
+        solid
+        #947a55;
+
+    border-bottom:
+        1px
+        solid
+        #947a55;
+
+    font-family:
+        "IM Fell English",
+        serif;
+
+    font-size: 29px;
+
+    font-style: italic;
+
+    line-height: 1.55;
+}
+
+
+/* =====================================================
+   SECTION TITLE
+===================================================== */
+
+.section-title {
+
+    text-align: center;
+
+    margin:
+        60px
+        0
+        35px;
+}
+
+
+.section-title h3 {
+
+    font-family:
+        "IM Fell English",
+        serif;
+
+    font-size: 34px;
+
+    font-weight: 400;
+}
+
+
+.section-title span {
+
+    color: #806548;
+
+    letter-spacing: 7px;
+}
+
+
+/* =====================================================
+   PAGE ORNAMENT
+===================================================== */
+
+.page-break {
+
+    margin:
+        70px
+        0;
+
+    text-align: center;
+
+    color: #806748;
+
+    letter-spacing: 12px;
+}
+
+
+/* =====================================================
+   ENDING
+===================================================== */
+
+.ending {
+
+    padding:
+        70px
+        20px
+        50px;
+
+    text-align: center;
+}
+
+
+.ending h3 {
+
+    margin:
+        0
+        0
+        20px;
+
+    font-family:
+        "IM Fell English",
+        serif;
+
+    font-size: 44px;
+
+    font-weight: 400;
+}
+
+
+.ending p {
+
+    max-width: 600px;
+
+    margin:
+        auto;
+
+    font-size: 20px;
+
+    font-style: italic;
+
+    line-height: 1.8;
+}
+
+
+/* =====================================================
+   NEXT EPISODE
+===================================================== */
+
+.next-area {
+
+    padding:
+        35px
+        20px
+        70px;
+
+    text-align: center;
+}
+
+
+.next-button {
+
+    padding:
+        16px
+        40px;
+
+    border:
+        1px
+        solid
+        #806548;
+
+    background:
+        #493522;
+
+    color:
+        #f4e5c5;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size: 19px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    transition:
+        .4s;
+}
+
+
+.next-button:hover {
+
+    background:
+        #2e2115;
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(50,30,10,.25);
+}
+
+
+.coming-soon {
+
+    display: none;
+
+    margin-top: 38px;
+
+    font-family:
+        "IM Fell English",
+        serif;
+
+    font-size: 43px;
+
+    color: #493522;
+
+    animation:
+        fadeIn
+        1.4s
+        ease;
+}
+
+
+@keyframes fadeIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(18px)
+            scale(.95);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =====================================================
+   SIGNATURE
+===================================================== */
+
+.signature {
+
+    padding:
+        20px
+        20px
+        55px;
+
+    text-align: center;
+
+    font-size: 18px;
+
+    font-style: italic;
+
+    color: #715a3f;
+}
+
+
+.signature strong {
+
+    font-family:
+        "IM Fell English",
+        serif;
+
+    font-size: 24px;
+
+    font-weight: 400;
+}
+
+
+/* =====================================================
+   MUSIC BUTTON
+===================================================== */
+
+#musicBtn {
+
+    position: fixed;
+
+    bottom: 20px;
+
+    right: 20px;
+
+    width: 50px;
+
+    height: 50px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #222;
+
+    color: white;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    z-index: 9999;
+
+    box-shadow:
+        0 4px 12px
+        rgba(0,0,0,0.3);
+}
+
+
+#musicBtn.playing {
+
+    transform:
+        scale(1.08);
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:600px) {
+
+    .book {
+
+        margin:
+            25px
+            10px;
+
+        padding: 10px;
+    }
+
+
+    .cover-content {
+
+        padding:
+            45px
+            20px;
+    }
+
+
+    .cover h1 {
+
+        font-size: 48px;
+    }
+
+
+    .subtitle {
+
+        font-size: 14px;
+
+        letter-spacing: 3px;
+    }
+
+
+    .story {
+
+        padding:
+            10px
+            5%;
+    }
+
+
+    .story p {
+
+        font-size: 18px;
+
+        line-height: 1.85;
+    }
+
+
+    .quote {
+
+        margin:
+            45px
+            5%;
+
+        font-size: 24px;
+    }
+
+
+    .chapter h2 {
+
+        font-size: 37px;
+    }
+
+
+    .ending h3 {
+
+        font-size: 35px;
+    }
+
+
+    .illustration {
+
+        margin:
+            45px
+            auto;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     MUSIC
+===================================================== -->
+
+<audio id="bgMusic" loop>
+
+    <source
+        src="music.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+<button
+    id="musicBtn"
+    onclick="toggleMusic()">
+
+    🎵
+
+</button>
+
+
+
+<!-- =====================================================
+     COVER
+===================================================== -->
+
+<section class="cover">
+
+    <div class="cover-content">
+
+        <h1>
+            Khamba &amp; Thoibi
+        </h1>
+
+        <div class="subtitle">
+            An Ancient Tale of Moirang
+        </div>
+
+        <div class="episode">
+            EPISODE II
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     BOOK
+===================================================== -->
+
+<main class="book">
+
+
+    <!-- CHAPTER -->
+
+    <section class="chapter">
+
+        <div class="ornament">
+            ❦ ❦ ❦
+        </div>
+
+        <h2>
+            The Road Between Two Hearts
+        </h2>
+
+        <p>
+            When a first meeting becomes a memory neither can forget
+        </p>
+
+    </section>
+
+
+
+    <!-- =================================================
+         STORY — PART I
+    ================================================== -->
+
+    <section class="story">
+
+        <p>
+            Morning came quietly over Moirang.
+        </p>
+
+
+        <p>
+            A thin mist rested over the fields, while the distant
+            hills slowly appeared beneath the light of the rising sun.
+        </p>
+
+
+        <p>
+            The village began another ordinary day.
+        </p>
+
+
+        <p>
+            People moved through their familiar routines. The fields
+            waited for another day of work, the paths filled with
+            footsteps, and the wind moved gently through the trees.
+        </p>
+
+
+        <p>
+            But for Khamba, the morning did not feel ordinary.
+        </p>
+
+
+        <p>
+            He had awakened with the memory of Thoibi still in his mind.
+        </p>
+
+
+        <p>
+            He tried to think about other things.
+        </p>
+
+
+        <p>
+            He tried to return his thoughts to the work waiting for him.
+        </p>
+
+
+        <p>
+            Yet somehow, his mind returned to that one moment.
+        </p>
+
+
+        <p>
+            The way she had appeared before him.
+        </p>
+
+
+        <p>
+            The quiet feeling he could not explain.
+        </p>
+
+
+        <p>
+            And the question that had begun to follow him everywhere.
+        </p>
+
+
+        <p>
+            Would he ever see her again?
+        </p>
+
+    </section>
+
+
+
+    <!-- =================================================
+         IMAGE ONE
+    ================================================== -->
+
+    <div class="illustration">
+
+        <img
+            src="https://files.catbox.moe/ihn8t8.jpg"
+            alt="Traditional Khamba and Thoibi artwork"
+        >
+
+        <div class="caption">
+
+            A quiet moment from the ancient world of Moirang.
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         STORY — PART II
+    ================================================== -->
+
+    <section class="story">
+
+        <p>
+            Days passed.
+        </p>
+
+
+        <p>
+            At first, nothing seemed to change.
+        </p>
+
+
+        <p>
+            Khamba continued his daily life, but now there was
+            something different in the way he looked at the world.
+        </p>
+
+
+        <p>
+            Every familiar road seemed to hold a possibility.
+        </p>
+
+
+        <p>
+            Every distant figure made him wonder.
+        </p>
+
+
+        <p>
+            And then, one day, he saw her again.
+        </p>
+
+
+        <p>
+            It was only a brief glance.
+        </p>
+
+
+        <p>
+            But this time, neither of them looked away immediately.
+        </p>
+
+
+        <p>
+            There were no words between them.
+        </p>
+
+
+        <p>
+            Still, somehow, that silence seemed to say more than
+            words could have said.
+        </p>
+
+
+        <p>
+            After that, their paths seemed to cross more often.
+        </p>
+
+
+        <p>
+            Sometimes it was only a passing glance.
+        </p>
+
+
+        <p>
+            Sometimes it was a quiet greeting.
+        </p>
+
+
+        <p>
+            Sometimes they simply knew the other was nearby.
+        </p>
+
+
+        <p>
+            Small moments began to become important.
+        </p>
+
+
+        <p>
+            Neither of them spoke openly about what was happening.
+        </p>
+
+
+        <p>
+            Perhaps they were both afraid of giving a name to
+            something that was still growing.
+        </p>
+
+    </section>
+
+
+
+    <!-- =================================================
+         QUOTE
+    ================================================== -->
+
+    <div class="quote">
+
+        “Sometimes the heart remembers a moment
+        long before the mind understands why
+        that moment mattered.”
+
+    </div>
+
+
+
+    <!-- =================================================
+         STORY — PART III
+    ================================================== -->
+
+    <section class="story">
+
+        <p>
+            Thoibi began to wonder about him too.
+        </p>
+
+
+        <p>
+            One evening, while speaking with someone she trusted,
+            she found herself talking about a young man she had met.
+        </p>
+
+
+        <p>
+            She did not say his name immediately.
+        </p>
+
+
+        <p>
+            Perhaps she was still trying to understand why she
+            remembered him so clearly.
+        </p>
+
+
+        <p>
+            She wondered where he came from.
+        </p>
+
+
+        <p>
+            She wondered what kind of life he had lived.
+        </p>
+
+
+        <p>
+            And perhaps most of all, she wondered where that person
+            would be tomorrow.
+        </p>
+
+
+        <p>
+            Meanwhile, Khamba carried the same questions.
+        </p>
+
+
+        <p>
+            Their lives were beginning to move toward one another,
+            slowly and quietly.
+        </p>
+
+
+        <p>
+            But the world around them had already begun to notice.
+        </p>
+
+
+        <p>
+            Villages have long memories.
+        </p>
+
+
+        <p>
+            A glance could become a story.
+        </p>
+
+
+        <p>
+            A conversation could become a rumour.
+        </p>
+
+
+        <p>
+            And soon, people began to talk.
+        </p>
+
+
+        <p>
+            Khamba heard the whispers.
+        </p>
+
+
+        <p>
+            Thoibi heard them too.
+        </p>
+
+
+        <p>
+            Suddenly, the simple moments between them did not feel
+            quite so simple anymore.
+        </p>
+
+    </section>
+
+
+
+    <!-- =================================================
+         IMAGE TWO
+    ================================================== -->
+
+    <div class="illustration">
+
+        <img
+            src="https://files.catbox.moe/54tmvx.jpeg"
+            alt="Beautiful traditional Khamba and Thoibi artwork"
+        >
+
+        <div class="caption">
+
+            The path of two hearts beneath the ancient sky of Moirang.
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         STORY — PART IV
+    ================================================== -->
+
+    <section class="story">
+
+        <p>
+            One evening, they finally spoke about it.
+        </p>
+
+
+        <p>
+            They stood where the noise of the village felt far away.
+        </p>
+
+
+        <p>
+            For a moment, neither of them knew how to begin.
+        </p>
+
+
+        <p>
+            Finally, Thoibi spoke.
+        </p>
+
+
+        <p>
+            “People are talking.”
+        </p>
+
+
+        <p>
+            Khamba looked at her.
+        </p>
+
+
+        <p>
+            “I know.”
+        </p>
+
+
+        <p>
+            There was a silence between them.
+        </p>
+
+
+        <p>
+            “Does it bother you?” she asked.
+        </p>
+
+
+        <p>
+            Khamba thought for a moment.
+        </p>
+
+
+        <p>
+            “Yes.”
+        </p>
+
+
+        <p>
+            He looked toward the road before continuing.
+        </p>
+
+
+        <p>
+            “But I'm more afraid of letting other people's words
+            decide what I should feel.”
+        </p>
+
+
+        <p>
+            Thoibi remained quiet.
+        </p>
+
+
+        <p>
+            “I don't want to make your life difficult,” Khamba said.
+        </p>
+
+
+        <p>
+            Thoibi looked at him.
+        </p>
+
+
+        <p>
+            “Then don't.”
+        </p>
+
+
+        <p>
+            Khamba smiled slightly.
+        </p>
+
+
+        <p>
+            “How?”
+        </p>
+
+
+        <p>
+            Her answer was quiet.
+        </p>
+
+
+        <p>
+            “Don't make decisions for me.”
+        </p>
+
+
+        <p>
+            For the first time, Khamba understood that Thoibi was
+            not simply someone he admired from a distance.
+        </p>
+
+
+        <p>
+            She had her own courage.
+        </p>
+
+
+        <p>
+            Her own thoughts.
+        </p>
+
+
+        <p>
+            Her own choices.
+        </p>
+
+
+        <p>
+            “We don't know what tomorrow will bring,” he said.
+        </p>
+
+
+        <p>
+            Thoibi looked toward the fading light.
+        </p>
+
+
+        <p>
+            “But today is still ours to understand.”
+        </p>
+
+    </section>
+
+
+
+    <!-- =================================================
+         QUOTE TWO
+    ================================================== -->
+
+    <div class="quote">
+
+        “We cannot see tomorrow,
+        but we can choose what we do
+        with the moment we have today.”
+
+    </div>
+
+
+
+    <!-- =================================================
+         PAGE ORNAMENT
+    ================================================== -->
+
+    <div class="page-break">
+
+        ❧ ✦ ❧
+
+    </div>
+
+
+
+    <!-- =================================================
+         THE UNEXPECTED NEWS
+    ================================================== -->
+
+    <section class="section-title">
+
+        <span>
+            ❦ ❦ ❦
+        </span>
+
+        <h3>
+            The Unexpected News
+        </h3>
+
+    </section>
+
+
+
+    <section class="story">
+
+        <p>
+            Not long after that conversation, Khamba received news
+            he had not expected.
+        </p>
+
+
+        <p>
+            He might have to leave.
+        </p>
+
+
+        <p>
+            The road ahead was no longer only about the paths he
+            knew around his home.
+        </p>
+
+
+        <p>
+            He might have to travel away from the fields, away from
+            the familiar hills, and away from the place where he had
+            begun to know Thoibi.
+        </p>
+
+
+        <p>
+            He did not know for how long.
+        </p>
+
+
+        <p>
+            He did not know what would happen while he was away.
+        </p>
+
+
+        <p>
+            And for the first time, the thought of leaving did not
+            feel like simply travelling.
+        </p>
+
+
+        <p>
+            It felt like leaving something unfinished.
+        </p>
+
+
+        <p>
+            Khamba knew he had to tell Thoibi.
+        </p>
+
+
+        <p>
+            When they met, he struggled to find the right words.
+        </p>
+
+
+        <p>
+            Finally, he said,
+        </p>
+
+
+        <p>
+            “I may have to leave.”
+        </p>
+
+
+        <p>
+            Thoibi looked at him.
+        </p>
+
+
+        <p>
+            “For how long?”
+        </p>
+
+
+        <p>
+            “I don't know.”
+        </p>
+
+
+        <p>
+            Her expression changed, but she remained calm.
+        </p>
+
+
+        <p>
+            “Are you afraid?”
+        </p>
+
+
+        <p>
+            Khamba answered honestly.
+        </p>
+
+
+        <p>
+            “Yes.”
+        </p>
+
+
+        <p>
+            Thoibi looked toward the distant hills.
+        </p>
+
+
+        <p>
+            “Then you're not the only one.”
+        </p>
+
+
+        <p>
+            The words stayed between them.
+        </p>
+
+
+        <p>
+            Khamba wanted to promise that everything would remain
+            exactly the same.
+        </p>
+
+
+        <p>
+            But he knew promises could not control the future.
+        </p>
+
+
+        <p>
+            Thoibi seemed to understand that too.
+        </p>
+
+
+        <p>
+            “Don't promise me that nothing will change,” she said.
+        </p>
+
+
+        <p>
+            Khamba looked at her.
+        </p>
+
+
+        <p>
+            “Because things change.”
+        </p>
+
+
+        <p>
+            She paused.
+        </p>
+
+
+        <p>
+            “Just don't let fear make your decisions for you.”
+        </p>
+
+    </section>
+
+
+
+    <!-- =================================================
+         FINAL RIVER SCENE
+    ================================================== -->
+
+    <section class="section-title">
+
+        <span>
+            ❦ ❦ ❦
+        </span>
+
+        <h3>
+            Before The Road
+        </h3>
+
+    </section>
+
+
+
+    <section class="story">
+
+        <p>
+            That evening, they walked toward the river.
+        </p>
+
+
+        <p>
+            Neither spoke much.
+        </p>
+
+
+        <p>
+            The sound of the water filled the silence between them.
+        </p>
+
+
+        <p>
+            The sky slowly changed its colour as the day came to
+            an end.
+        </p>
+
+
+        <p>
+            Khamba looked across the water.
+        </p>
+
+
+        <p>
+            He knew the road ahead would not be easy.
+        </p>
+
+
+        <p>
+            Thoibi knew it too.
+        </p>
+
+
+        <p>
+            Yet neither of them wanted to turn that evening into
+            a final goodbye.
+        </p>
+
+
+        <p>
+            Some goodbyes are too heavy to say when the story has
+            not yet finished.
+        </p>
+
+
+        <p>
+            So they simply stood there.
+        </p>
+
+
+        <p>
+            Together.
+        </p>
+
+
+        <p>
+            The river moved forward, carrying the reflection of
+            the fading sky.
+        </p>
+
+
+        <p>
+            Khamba looked at Thoibi.
+        </p>
+
+
+        <p>
+            She looked back.
+        </p>
+
+
+        <p>
+            No promise was made.
+        </p>
+
+
+        <p>
+            No great words were spoken.
+        </p>
+
+
+        <p>
+            But sometimes, two people can understand something
+            without saying it aloud.
+        </p>
+
+
+        <p>
+            Whatever happened next, this moment would remain with them.
+        </p>
+
+    </section>
+
+
+
+    <!-- =================================================
+         QUOTE THREE
+    ================================================== -->
+
+    <div class="quote">
+
+        “The road ahead may be uncertain,
+        but every meaningful journey begins
+        with the courage to take the next step.”
+
+    </div>
+
+
+
+    <!-- =================================================
+         ENDING
+    ================================================== -->
+
+    <section class="ending">
+
+        <h3>
+            The road ahead was uncertain.
+        </h3>
+
+        <p>
+            But their story was not over.
+            Sometimes “goodbye” is not the end of a story.
+            Sometimes it is simply the beginning of the next chapter.
+        </p>
+
+    </section>
+
+
+
+    <div class="page-break">
+
+        ❧ ✦ ❧
+
+    </div>
+
+
+
+    <!-- =================================================
+         EPISODE NAVIGATION
+    ================================================== -->
+
+    <section class="next-area">
+
+        <a
+            href="index.html"
+            class="next-button"
+            style="display:inline-block; text-decoration:none;">
+
+            ← PREVIOUS EPISODE
+
+        </a>
+
+
+        <br><br><br>
+
+
+        <a
+    href="episode3.html"
+    class="next-button"
+    style="display:inline-block; text-decoration:none;">
+
+    NEXT EPISODE →
+
+</a>
+
+    </section>
+
+
+
+    <!-- =================================================
+         SIGNATURE
+    ================================================== -->
+
+    <div class="signature">
+
+        With regards,
+
+        <br><br>
+
+        <strong>
+            Damcha Longjam
+        </strong>
+
+    </div>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+function showComingSoon() {
+
+    const message =
+        document.getElementById("comingSoon");
+
+    message.style.display = "block";
+
+    message.scrollIntoView({
+
+        behavior: "smooth",
+
+        block: "center"
+
+    });
+
+}
+
+
+
+function toggleMusic() {
+
+    const music =
+        document.getElementById("bgMusic");
+
+    const button =
+        document.getElementById("musicBtn");
+
+
+    if (music.paused) {
+
+        music.play();
+
+        button.textContent = "⏸";
+
+        button.classList.add("playing");
+
+    }
+
+    else {
+
+        music.pause();
+
+        button.textContent = "🎵";
+
+        button.classList.remove("playing");
+
+    }
+
+}
+
+</script>
+
+
+</body>
+
+</html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+
+<body>
+  
+</body>
+
+</html>
