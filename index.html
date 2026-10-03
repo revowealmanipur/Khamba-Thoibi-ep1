@@ -1285,12 +1285,49 @@ function showComingSoon() {
   <title></title>
 </head>
 <audio id="bgMusic" loop>
-    <source src="./music.mp3" type="audio/mpeg">
+    <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<button onclick="document.getElementById('bgMusic').play()">
-    🎵 Play Music
-</button>
+<button id="musicBtn" onclick="toggleMusic()">🎵</button>
+
+<style>
+#musicBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: #222;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+#musicBtn.playing {
+    transform: scale(1.08);
+}
+</style>
+
+<script>
+function toggleMusic() {
+    const music = document.getElementById("bgMusic");
+    const button = document.getElementById("musicBtn");
+
+    if (music.paused) {
+        music.play();
+        button.textContent = "⏸";
+        button.classList.add("playing");
+    } else {
+        music.pause();
+        button.textContent = "🎵";
+        button.classList.remove("playing");
+    }
+}
+</script>
    <body>
   
 </body>
