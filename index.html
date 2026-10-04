@@ -1,4 +1,4 @@
-<!DOCTYPE html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -601,10 +601,6 @@ body::before {
 
 
 /* =====================================================
-   MUSIC BUTTON STYLES
-===================================================== */
-
-/* =====================================================
    MOBILE
 ===================================================== */
 
@@ -694,10 +690,6 @@ body::before {
 
 
 <body>
-
-<!-- =====================================================
-     AUDIO & MUSIC BUTTON
-===================================================== -->
 
 <!-- =====================================================
      COVER
@@ -1183,9 +1175,8 @@ body::before {
 
 
 <!-- =====================================================
-     JAVASCRIPT
+     JAVASCRIPT & MUSIC PLAYER IFRAME
 ===================================================== -->
-
 <script>
 /* =====================================================
    COMING SOON
@@ -1198,7 +1189,6 @@ function showComingSoon() {
         block: "center"
     });
 }
-
 
 /* =====================================================
    AJAX NAVIGATION (Keeps music iframe persistent)
@@ -1234,6 +1224,7 @@ document.addEventListener("click", function(e) {
 });
 </script>
 
+<!-- Persistent Music Player Iframe (Single instance) -->
 <iframe
     src="music.html"
     title="Music Player"
@@ -1253,36 +1244,5 @@ document.addEventListener("click", function(e) {
     ">
 </iframe>
 
-<iframe
-    src="music.html"
-    title="Music Player"
-    allowtransparency="true"
-    scrolling="no"
-    style="
-        position: fixed;
-        right: 5px;
-        bottom: 5px;
-        width: 100px;
-        height: 100px;
-        border: 0;
-        outline: none;
-        background: transparent;
-        z-index: 999999;
-        overflow: hidden;
-    ">
-</iframe>
 </body>
-</html>
-<html>
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
-</head>
-
-<body>
-  
-</body>
-
 </html>
