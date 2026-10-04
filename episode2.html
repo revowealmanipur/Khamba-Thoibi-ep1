@@ -1712,25 +1712,71 @@ body::before {
 ===================================================== -->
 
 <script>
-
-
+/* =====================================================
+   COMING SOON
+===================================================== */
 function showComingSoon() {
-
-    const message =
-        document.getElementById("comingSoon");
-
+    const message = document.getElementById("comingSoon");
     message.style.display = "block";
-
     message.scrollIntoView({
-
         behavior: "smooth",
-
         block: "center"
-
     });
-
 }
+
+
+/* =====================================================
+   AJAX NAVIGATION (Keeps music iframe persistent)
+===================================================== */
+document.addEventListener("click", function(e) {
+    const link = e.target.closest('a.next-button');
+    if (link) {
+        e.preventDefault();
+        const url = link.getAttribute('href');
+
+        fetch(url)
+            .then(response => response.text())
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                
+                const newBook = doc.querySelector('main.book');
+                const currentBook = document.querySelector('main.book');
+                
+                if (newBook && currentBook) {
+                    currentBook.innerHTML = newBook.innerHTML;
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    window.history.pushState({path: url}, '', url);
+                    document.title = doc.title;
+                } else {
+                    window.location.href = url;
+                }
+            })
+            .catch(err => {
+                window.location.href = url;
+            });
+    }
+});
 </script>
+
+<iframe
+    src="music.html"
+    title="Music Player"
+    allowtransparency="true"
+    scrolling="no"
+    style="
+        position: fixed;
+        right: 5px;
+        bottom: 5px;
+        width: 100px;
+        height: 100px;
+        border: 0;
+        outline: none;
+        background: transparent;
+        z-index: 999999;
+        overflow: hidden;
+    ">
+</iframe>
 <iframe
     src="music.html"
     title="Music Player"
